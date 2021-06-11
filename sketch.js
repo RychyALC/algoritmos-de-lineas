@@ -1,18 +1,30 @@
 function setup() {
   createCanvas(400, 400);
 }
-let p1 = {x:10,y:20};p2 = {x:100,y:30};
+let p1 = {x:15,y:20};p2 = {x:95,y:30};
 
-let p3 = {x:100,y:10};p4 = {x:200,y:50};
+let p3 = {x:115,y:20};p4 = {x:195,y:30};
 
-let p5 = {x:200,y:10};p6 = {x:300,y:50};
+let p5 = {x:215,y:20};p6 = {x:295,y:30};
 
 
 function draw() {
   background(220);
+  fill(250);
+  rect(10,10,90);
+  fill(200);
+  rect(110,10,90);
+  fill(150);
+  rect(210,10,90);
   puntoPendiente(p1,p2);
   DDA(p3, p4)
   Bresenham(p5, p6);
+
+  textStyle(BOLD)
+  fill(0);
+  text("*Punto pendiente",5,120);
+  text("*DDA",110,120);
+  text("*Bresenham",210,120);
 }
 
 function puntoPendiente(p1, p2){
