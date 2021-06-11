@@ -5,7 +5,7 @@ let p1 = {x:10,y:20};p2 = {x:100,y:30};
 
 let p3 = {x:100,y:10};p4 = {x:200,y:50};
 
-let p5 = {x:100,y:10};p6 = {x:200,y:50};
+let p5 = {x:200,y:10};p6 = {x:300,y:50};
 
 
 function draw() {
@@ -61,18 +61,33 @@ function DDA(p1, p2){
 
 }
 function Bresenham(p1, p2){
-  const dx = p2.x - p1.x;
-  const dy = p2.y - p1.y;
-  const p = 2*dy -dx;
+  const dx = abs(p2.x - p1.x);
+  const dy = abs(p2.y - p1.y);
+  let p = 2*dy -dx;
+  let x, y, aux;
 
-  for (let i = 0; i < dx; i++) {
-    if(p < 0){
-      point();
+  if (p1.x > p2.x) {
+    x = p1.x;
+    y = p2.y;
+    aux = p1.x;
+  }else{
+    x = p1.x;
+    y = p1.y;
+    aux = p2.x;
+  }
+  point(x, y);
+
+  while (x < aux) {
+    x = x + 1;
+
+    if ( p < 0 ) {
+      p = p + 2*dy;
     }else{
-      point();
-      p = p + 2*dy - 2*dx;
+      y = y + 1;
+      p = p + 2*(dy - dx);
+      
     }
-    
+    point(x,y);
   }
 
 }
